@@ -1,0 +1,100 @@
+header {
+    background-color: rgb(52, 120, 247);
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header-titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header-avatar{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    button {
+        margin-right: 7px;
+        height: 4em;
+        width: 4em;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+    }
+}
+
+section {
+    background-color:rgb(79, 138, 247); 
+    width: 80%;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-direction: column;
+    margin: 1em;
+    padding: 0.8em;
+    border-radius: 0.2em;
+
+}
+
+#titulo-registro {
+    color: rgb(70, 40, 2);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    background-color:rgb(240, 179, 125);
+}
+
+#titulo-registros {
+    padding: 0.6em;
+    font-size:xx-large;
+}
+
+#adicionar-registro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    height: 6em;
+    width: 6em;
+    aspect-ratio: 1/1;
+    border-radius: 33%;
+    border-width: 0.4em;
+    background-color: rgb(79, 138, 247);
+
+    span {
+        font-size: 4em;
+        position: absolute;
+        vertical-align: middle;
+        bottom: 7%;
+    }
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(240, 179, 125);
+    padding: 2em;
+}

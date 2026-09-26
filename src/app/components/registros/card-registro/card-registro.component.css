@@ -1,0 +1,31 @@
+#card-registro {
+    display: flex;
+    width: 200%;
+    justify-self: center;
+    justify-content: center;
+    align-items:end;
+    flex-direction: column;
+    margin: 3%;
+    background-color:rgb(240, 179, 125);
+}
+
+section {
+    background-color:rgb(79, 138, 247); 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.8em;
+    border-radius: 1em;
+
+}
+
+#editar-registro {
+    padding: 3%;
+    
+    a {
+        text-decoration:solid;
+        color: black;
+    }
+}
+
