@@ -39,7 +39,7 @@ header {
 
 section {
     background-color:rgb(79, 138, 247); 
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: left;
     align-items: left;
@@ -89,6 +89,14 @@ main {
         vertical-align: middle;
         bottom: 7%;
     }
+}
+
+#registros-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
 }
 
 footer {
