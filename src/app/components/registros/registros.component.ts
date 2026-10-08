@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CardRegistroComponent } from './card-registro/card-registro.component';
 import { Registro } from './card-registro/Registro';
 import { NgFor } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registros',
@@ -12,22 +13,26 @@ import { NgFor } from '@angular/common';
 })
 
 export class RegistrosComponent {
-  registrosOrigem: Registro[] = [
-    {
-      titulo: 'Um novo começo',
-      conteudo: 'Hoje comecei a registrar minhas ideias e experiências.',
-      data: new Date('2026-09-25')
-    },
-    {
-      titulo: 'Aprendizado do dia',
-      conteudo: 'Pratiquei novos conceitos e avancei no meu projeto.',
-      data: new Date('2026-09-26')
-    },
-    {
-      titulo: 'Planos para amanhã',
-      conteudo: 'Vou organizar minhas tarefas e continuar estudando.',
-      data: new Date('2026-09-27')
-    }
-  ]
-}
+  registrosOrigem: Registro[] = []
 
+  constructor(private _http: HttpClient) {
+
+  }
+
+  ngOnInit() {
+    this._http.get<Registro[]>('http://localhost:4200/api/registros/listar',
+      {
+        transferCache: false
+      }
+    )
+      .subscribe({
+        next: (registros) => {
+          this.registrosOrigem = registros;
+        },
+        error: (error) => {
+          console.error('Erro ao buscar registros:', error);
+        }
+      });
+
+};
+}
