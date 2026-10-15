@@ -1,5 +1,5 @@
 export interface Registro {
     titulo: string;
     conteudo: string;
-    data: Date;
+    data: string;
 }

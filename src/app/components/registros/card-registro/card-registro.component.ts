@@ -14,6 +14,6 @@ export class CardRegistroComponent {
   registroDestino: Registro = {
     titulo: 'Titulo do Registro',
     conteudo: 'Conteúdo do Registro...',
-    data: new Date('2026-09-24')
+    data: ('2026-09-24')
   };
 }

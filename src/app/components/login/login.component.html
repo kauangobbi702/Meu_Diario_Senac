@@ -1,1 +1,17 @@
-<p>login works!</p>
+<header></header>
+<main>
+    <section id="login-container">
+        <div id="login header">
+            <h1 id="titulo-diario">MEU DIÁRIO SENAC</h1>
+        </div>
+        <form id="login-form" (ngSubmit)="autenticar()">
+            <label for="Usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Digite o seu usuario" required [(ngModel)]="nome">
+
+            <label for="Senha">Senha:</label>
+            <input type="text" id="senha" name="senha" placeholder="Digite a sua senha" required [(ngModel)]="senha">
+
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+</main>
