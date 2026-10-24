@@ -4,6 +4,7 @@ import { Registro } from './card-registro/Registro';
 import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AutenticacaoService } from '../../services/autenticacao.service';
 
 @Component({
   selector: 'app-registros',
@@ -24,15 +25,18 @@ export class RegistrosComponent {
     data: new Date().toLocaleDateString('sv-SE')
   };
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private autenticacaoService : AutenticacaoService) {
 
   }
 
   ngOnInit() {
-    this._http.get<Registro[]>('http://localhost:4200/api/registros/listar',
-      {
-        transferCache: false
+    const token = this.autenticacaoService.retornarToken();
+
+    this._http.get<Registro[]>('http://localhost:4200/api/registros/listar', {
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
+    }
     )
     .subscribe({
       next: (registros) => {
@@ -44,16 +48,25 @@ export class RegistrosComponent {
   })}
 
   adicionarRegistro() {
-    this._http.post<Registro>('http://localhost:4200/api/registros/postar', {
+    const token = this.autenticacaoService.retornarToken();
+    const registroParaAdicionar = { ...this.novoRegistro };
+    this._http.post('http://localhost:4200/api/registros/postar', {
       ...this.novoRegistro,
       "usuarioId": 3
-    }).subscribe({
-      next: (registro) => {
-        this.registrosOrigem.push(registro);
+    },
+    {
+      responseType: 'text',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }}).subscribe({
+      next: () => {
+        this.registrosOrigem.push(registroParaAdicionar);
         this.modalSolicitado = false;
+      },
+      error: (error) => {
+        console.error('Erro ao adicionar registro:', error);
       }
     })
   }
 
 };
-
